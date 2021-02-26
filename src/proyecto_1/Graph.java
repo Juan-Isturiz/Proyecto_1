@@ -11,26 +11,20 @@ package proyecto_1;
  */
 public class Graph {
     int size;
-    boolean [][] matrix;
-    Vertex [] actors;
-    public Graph(Vertex[] actors){
+    List [] adylist;
+    List actors;
+    public Graph(List actors){
         this.actors = actors;
-        this.size = actors.length;
-        this.matrix = new boolean[size][size];
-        for (int i = 0; i< actors.length; i++){
-            for (int x = 0; x<actors.length; x++){
-                boolean a;
-                for (Edge edge1 : actors[i].edges) {
-                    for (Edge edge : actors[x].edges) {
-                        a = false;
-                        if (edge == edge1) {
-                            a = true;
-                            
-                        }
-                        matrix[i][x] = a;
-                    }
-                }
+        this.size = actors.getSize();
+        this.adylist = new List[size];
+        for (int i = 0; i< actors.getSize(); i++){
+            List a = new List();
+            a.append(actors.index(i).getId(),actors.index(i).getName(),actors.index(i).getBirth());
+            for (int j = 0; j < actors.index(i).getEdges().getSize(); j++){
+                
             }
+            adylist[i] = a;
+            
         }
         
         
