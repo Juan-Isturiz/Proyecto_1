@@ -86,8 +86,9 @@ public class List {
     }
 
     public Node index(int indx) {
-        Node aux = first;
+        Node aux = null;
         if (indx < size) {
+            aux = first;
             for (int i = 0; i < indx; i++) {
                 aux = aux.getNext();
             } 
@@ -105,5 +106,14 @@ public class List {
             aux = aux.getNext();
         }
         return res;
+    }
+    public String print() {
+        String listado = "";
+        Node now = first;
+        while (now != null) {
+            listado += now.getData() + "\n";
+            now = now.getNext();
+        }
+        return listado;
     }
 }

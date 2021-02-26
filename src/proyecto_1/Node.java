@@ -19,7 +19,7 @@ public class Node {
     public Node(int id,String name,int year){
         this.name = name;
         this.id = id;
-        this.birth = birth;
+        this.birth = year;
         this.next = null;
         this.prev= null;
         this.edges = new List();
@@ -103,5 +103,9 @@ public class Node {
     }
     public void addEdge(int id, String name,int birth){
         edges.append(id, name, birth);
+    }
+    public String getData(){
+        String a = id+", "+name+", "+birth;
+        return a;
     }
 }
