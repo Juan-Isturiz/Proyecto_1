@@ -15,6 +15,7 @@ public class testmain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        /**
         List b = new List();
         b.append(12,"asd",13);
         b.append(0, "yay", 0);
@@ -26,6 +27,10 @@ public class testmain {
         Graph c= new Graph(b);
         String d =c.printList();
         System.out.println(d);
+        **/
+        DataManage c = new DataManage();
+        Graph trying  = c.readCSV();
+        System.out.println(trying.printList());
         
     }
     

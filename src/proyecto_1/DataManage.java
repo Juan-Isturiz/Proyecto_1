@@ -20,13 +20,13 @@ public class DataManage {
         
     }
     public Graph readCSV(){
-        String doc = "test\\movies.csv";
+        String doc;
+        doc = "Test Packages\\movies.csv";
         String act = "";
         String mov = "";
         String star = "";
         List movies = new List();
         List actors= new List();
-        String [] starring;
         String line;
         File docu = new File(doc);
         try{
@@ -58,7 +58,7 @@ public class DataManage {
             }catch(IOException e){
             JOptionPane.showMessageDialog(null, "Error while reading");
             }
-            doc ="test\\people.csv";
+            doc ="Test Packages\\people.csv";
             docu = new File(doc);
         try{
             if (!docu.exists()){
@@ -75,7 +75,7 @@ public class DataManage {
                 if(!"".equals(act)){
                     String[] acto = act.split("\n");
                     for (int i = 0; i<acto.length;i++){
-                        if (!acto[i].equals("id,title,year")){
+                        if (!acto[i].equals("id,name,birth")){
                             String [] data = acto[i].split(",");
                             actors.append(Integer.parseInt(data[0]),data[1],Integer.parseInt(data[2]));
                         }
@@ -89,7 +89,41 @@ public class DataManage {
         }catch(IOException | NumberFormatException e){
             JOptionPane.showMessageDialog(null, "Error while reading");
         }
-        return null;
+        doc ="Test Packages\\stars.csv";
+            docu = new File(doc);
+        try{
+            if (!docu.exists()){
+                docu.createNewFile();
+            } else{
+                FileReader fr = new FileReader(docu);
+                BufferedReader br = new BufferedReader(fr);
+                while ((line = br.readLine())!= null){
+                    if (!line.isEmpty()){
+                        star += line + "\n";
+                        
+                    }
+                }
+                if(!"".equals(star)){
+                    String[] str = star.split("\n");
+                    for (int i = 0; i<str.length;i++){
+                        if (!str[i].equals("person_id,movie_id") && !str[i].equals(null)){
+                            String [] data = str[i].split(",");
+                            Node starring = actors.searchId(Integer.parseInt(data[0]));
+                            String []peli = (movies.searchId(Integer.parseInt(data[1]))).getData().split(", ");
+                            starring.addEdge(Integer.parseInt(peli[0]), peli[1],Integer.parseInt(peli[2]));
+                        }
+                        
+                    }
+                }
+                fr.close();
+                br.close();
+            
+        }
+        }catch(IOException | NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "Error while reading");
+        }
+        Graph grafo = new Graph(actors);
+        return grafo;
         }
     
 }
