@@ -13,8 +13,8 @@ import javax.swing.JOptionPane;
  */
 public class List {
 
-    private Node first;
-    private Node last;
+    private Nodo first;
+    private Nodo last;
     private int size;
 
     public List() {
@@ -26,28 +26,28 @@ public class List {
     /**
      * @return the first
      */
-    public Node getFirst() {
+    public Nodo getFirst() {
         return first;
     }
 
     /**
      * @param first the first to set
      */
-    public void setFirst(Node first) {
+    public void setFirst(Nodo first) {
         this.first = first;
     }
 
     /**
      * @return the last
      */
-    public Node getLast() {
+    public Nodo getLast() {
         return last;
     }
 
     /**
      * @param last the last to set
      */
-    public void setLast(Node last) {
+    public void setLast(Nodo last) {
         this.last = last;
     }
 
@@ -74,7 +74,7 @@ public class List {
     }
 
     public void append(int id, String name, int birth) {
-        Node app = new Node(id, name, birth);
+        Nodo app = new Nodo(id, name, birth);
         if (!isEmpty()) {
             last.setNext(app);
             app.setPrev(last);
@@ -85,8 +85,8 @@ public class List {
         size++;
     }
 
-    public Node index(int indx) {
-        Node aux = null;
+    public Nodo index(int indx) {
+        Nodo aux = null;
         if (indx < size) {
             aux = first;
             for (int i = 0; i < indx; i++) {
@@ -96,9 +96,9 @@ public class List {
         return aux;
     }
 
-    public Node searchId(int id) {
-        Node aux = first;
-        Node res = null;
+    public Nodo searchId(int id) {
+        Nodo aux = first;
+        Nodo res = null;
         for (int i = 0; i < size; i++) {
             if (aux.getId() == id) {
                 res = aux;
@@ -111,7 +111,7 @@ public class List {
 
     public String print() {
         String listado = "";
-        Node now = first;
+        Nodo now = first;
         while (now != null) {
             listado += now.getData() + "\n";
             now = now.getNext();
@@ -119,8 +119,8 @@ public class List {
         return listado;
     }
 
-    public void appendNodo(Node nuevo) {
-        Node app = new Node(nuevo.getId(),nuevo.getName(),nuevo.getBirth());
+    public void appendNodo(Nodo nuevo) {
+        Nodo app = new Nodo(nuevo.getId(),nuevo.getName(),nuevo.getBirth());
         for(int i = 0; i<nuevo.getEdges().getSize(); i++){
             app.addEdge(nuevo.getEdges().index(i).getId(), nuevo.getEdges().index(i).getName(), nuevo.getEdges().index(i).getBirth());
         }
@@ -132,5 +132,17 @@ public class List {
             first = last = app;
         }
         size++;
+    }
+    public int findId(int id) {
+        Nodo aux = first;
+        Nodo res = null;
+        for (int i = 0; i < size; i++) {
+            if (aux.getId() == id) {
+                res = aux;
+                break;
+            }
+            aux = aux.getNext();
+        }
+        return res.getId();
     }
 }

@@ -22,7 +22,7 @@ public class DataManage {
 
     }
 
-    public Graph readCSV() {
+    public Grafo readCSV() {
         String doc;
         doc = "Test Packages\\movies.csv";
         String act = "";
@@ -127,7 +127,7 @@ public class DataManage {
                         for (String str1 : str) {
                             if (!str1.equals("person_id,movie_id")) {
                                 String[] data = str1.split(",");
-                                Node starring = actors.searchId(Integer.parseInt(data[0]));
+                                Nodo starring = actors.searchId(Integer.parseInt(data[0]));
                                 String[] peli = (movies.searchId(Integer.parseInt(data[1]))).getData().split(", ");
                                 starring.addEdge(Integer.parseInt(peli[0]), peli[1], Integer.parseInt(peli[2]));
                             }
@@ -141,7 +141,7 @@ public class DataManage {
             JOptionPane.showMessageDialog(null, "Error while reading");
         }
         }
-        Graph grafo = new Graph(actors);
+        Grafo grafo = new Grafo(actors);
         return grafo;
     }
 

@@ -23,8 +23,10 @@ public class testmain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+        System.setProperty("org.graphstream.ui", "swing");
+        DataManage ass = new DataManage();
+        Grafo grafo = ass.readCSV();
+        grafo.graficoId();
         
     }
-
 }

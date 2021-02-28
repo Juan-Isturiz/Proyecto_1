@@ -9,14 +9,14 @@ package proyecto_1;
  *
  * @author yunch
  */
-public class Node {
+public class Nodo {
     private int id;
     private String name;
     private int birth;
     private List edges;
-    private Node next;
-    private Node prev;
-    public Node(int id,String name,int year){
+    private Nodo next;
+    private Nodo prev;
+    public Nodo(int id,String name,int year){
         this.name = name;
         this.id = id;
         this.birth = year;
@@ -80,28 +80,28 @@ public class Node {
     /**
      * @return the next
      */
-    public Node getNext() {
+    public Nodo getNext() {
         return next;
     }
 
     /**
      * @param next the next to set
      */
-    public void setNext(Node next) {
+    public void setNext(Nodo next) {
         this.next = next;
     }
 
     /**
      * @return the prev
      */
-    public Node getPrev() {
+    public Nodo getPrev() {
         return prev;
     }
 
     /**
      * @param prev the prev to set
      */
-    public void setPrev(Node prev) {
+    public void setPrev(Nodo prev) {
         this.prev = prev;
     }
     public void addEdge(int id, String name,int birth){
