@@ -73,6 +73,9 @@ public class Node {
     public List getEdges() {
         return edges;
     }
+    public void setEdges(List edges){
+        this.edges = edges;
+    }
 
     /**
      * @return the next

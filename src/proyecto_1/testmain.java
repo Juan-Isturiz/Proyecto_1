@@ -5,6 +5,14 @@
  */
 package proyecto_1;
 
+import org.graphstream.graph.EdgeRejectedException;
+import org.graphstream.graph.ElementNotFoundException;
+import org.graphstream.graph.Graph;
+import org.graphstream.graph.IdAlreadyInUseException;
+import org.graphstream.graph.Node;
+import org.graphstream.graph.implementations.SingleGraph;
+import org.graphstream.ui.view.Viewer;
+
 /**
  *
  * @author yunch
@@ -15,23 +23,8 @@ public class testmain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        /**
-        List b = new List();
-        b.append(12,"asd",13);
-        b.append(0, "yay", 0);
-        b.append(123, "lmao", 2);
-        b.index(0).addEdge(0, "name", 0);
-        b.index(0).addEdge(1, "name", 1);
-        b.index(1).addEdge(0, "name", 0);
-        b.index(2).addEdge(1, "name", 1);
-        Graph c= new Graph(b);
-        String d =c.printList();
-        System.out.println(d);
-        **/
-        DataManage c = new DataManage();
-        Graph trying  = c.readCSV();
-        System.out.println(trying.printList());
+        
         
     }
-    
+
 }

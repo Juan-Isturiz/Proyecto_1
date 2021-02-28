@@ -11,9 +11,9 @@ package proyecto_1;
  */
 public class Graph {
 
-    int size;
-    List[] adylist;
-    List actors;
+    private int size;
+    private List[] adylist;
+    private List actors;
 
     public Graph(List actors) {
         this.actors = actors;
@@ -21,7 +21,7 @@ public class Graph {
         this.adylist = new List[size];
         for (int i = 0; i < actors.getSize(); i++) {
             List a = new List();
-            a.append(actors.index(i).getId(), actors.index(i).getName(), actors.index(i).getBirth());
+            a.appendNodo(actors.index(i));
             for (int k = 0; k < actors.getSize(); k++) {
                 for (int j = 0; j < actors.index(i).getEdges().getSize(); j++) {
                     for (int h = 0; h < actors.index(k).getEdges().getSize(); h++) {
@@ -29,7 +29,7 @@ public class Graph {
                         if (b != null) {
                             if (actors.index(i).getId() != actors.index(k).getId()) {
                                 if (a.searchId(actors.index(k).getId()) == null) {
-                                    a.append(actors.index(k).getId(), actors.index(k).getName(), actors.index(k).getBirth());
+                                    a.appendNodo(actors.index(k));
                                 }
                             }
                         }
@@ -38,16 +38,19 @@ public class Graph {
             }
             adylist[i] = a;
         }
+        System.out.println(adylist[0].getFirst().getEdges().getSize());
+       
+        
     }
 
     public String printList() {
         String print = "";
-        for (int i = 0; i < adylist.length; i++) {
+        for (int i = 0; i < getAdylist().length; i++) {
             print += "[";
-            for (int j = 0; j < adylist[i].getSize(); j++) {
-                if (adylist[i].index(j) != null) {
-                    print += adylist[i].index(j).getData() + "]";
-                    if (adylist[i].index(j).getNext() != null) {
+            for (int j = 0; j < getAdylist()[i].getSize(); j++) {
+                if (getAdylist()[i].index(j) != null) {
+                    print += getAdylist()[i].index(j).getData() + "]";
+                    if (getAdylist()[i].index(j).getNext() != null) {
                         print += ", [";
                     } else {
                         print += "\n";
@@ -56,6 +59,48 @@ public class Graph {
             }
         }
         return print;
+    }
+
+    /**
+     * @return the size
+     */
+    public int getSize() {
+        return size;
+    }
+
+    /**
+     * @param size the size to set
+     */
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    /**
+     * @return the adylist
+     */
+    public List[] getAdylist() {
+        return adylist;
+    }
+
+    /**
+     * @param adylist the adylist to set
+     */
+    public void setAdylist(List[] adylist) {
+        this.adylist = adylist;
+    }
+
+    /**
+     * @return the actors
+     */
+    public List getActors() {
+        return actors;
+    }
+
+    /**
+     * @param actors the actors to set
+     */
+    public void setActors(List actors) {
+        this.actors = actors;
     }
 
 }
