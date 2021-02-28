@@ -57,5 +57,50 @@ public class Graph {
         }
         return print;
     }
+    public String busquedaActor(){
+    String pelipeli = "";
+    String busqueda = "Kevin Bacon"; 
+    for(int i = 0; size > i; i++)         
+    {        
+    
+    Node ayuda = actors.index(i);
+    String ok = ayuda.getName();
+    String ok2 = ok.replaceAll("^\"+|\"+$", "");
+    if (ok2.equals(busqueda)){
+    List peliculas = ayuda.getEdges();
+    for(int y = 0; peliculas.getSize() > y; y++){
+        Node tupapa = peliculas.index(y);
+        String moviemovie  = tupapa.getName();
+        pelipeli += moviemovie;
+        pelipeli += "\n";     
+    } 
+        
+   }
+    
+  }
+      return pelipeli;
+}
+public String busquedaPelicula(){
+    String elenco = "";
+    String busqueda = "Apollo 13";
+    for(int i = 0; size > i; i++)         
+    {
+    Node ayuda = actors.index(i);    
+    List peliculas = ayuda.getEdges();    
+    for(int y = 0; peliculas.getSize() > y; y++){
+        Node tupapa = peliculas.index(y);
+        String moviemovie  = tupapa.getName();
+        String ok2 = moviemovie.replaceAll("^\"+|\"+$", "");
+        if (ok2.equals(busqueda)){
+            String cast = ayuda.getName();
+            elenco += cast;
+            elenco += "\n";
+        }
+     
+    }
+    
+}
+        return elenco;
+}
 
 }
