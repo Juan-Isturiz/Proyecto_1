@@ -45,7 +45,6 @@ public class Grafo {
             }
             adylist[i] = a;
         }
-        System.out.println(adylist[0].getFirst().getEdges().getSize());
 
     }
 
