@@ -73,8 +73,8 @@ public class List {
         return empty;
     }
 
-    public void append(int id, String name,int birth) {
-        Node app = new Node(id,name,birth);
+    public void append(int id, String name, int birth) {
+        Node app = new Node(id, name, birth);
         if (!isEmpty()) {
             last.setNext(app);
             app.setPrev(last);
@@ -82,7 +82,7 @@ public class List {
         } else {
             first = last = app;
         }
-        size ++;
+        size++;
     }
 
     public Node index(int indx) {
@@ -91,15 +91,16 @@ public class List {
             aux = first;
             for (int i = 0; i < indx; i++) {
                 aux = aux.getNext();
-            } 
+            }
         }
         return aux;
     }
-    public Node searchId(int id){
+
+    public Node searchId(int id) {
         Node aux = first;
         Node res = null;
-        for (int i = 0; i<size; i++){
-            if (aux.getId() == id){
+        for (int i = 0; i < size; i++) {
+            if (aux.getId() == id) {
                 res = aux;
                 break;
             }
@@ -107,6 +108,7 @@ public class List {
         }
         return res;
     }
+
     public String print() {
         String listado = "";
         Node now = first;
@@ -115,5 +117,20 @@ public class List {
             now = now.getNext();
         }
         return listado;
+    }
+
+    public void appendNodo(Node nuevo) {
+        Node app = new Node(nuevo.getId(),nuevo.getName(),nuevo.getBirth());
+        for(int i = 0; i<nuevo.getEdges().getSize(); i++){
+            app.addEdge(nuevo.getEdges().index(i).getId(), nuevo.getEdges().index(i).getName(), nuevo.getEdges().index(i).getBirth());
+        }
+        if (!isEmpty()) {
+            last.setNext(app);
+            app.setPrev(last);
+            this.setLast(app);
+        } else {
+            first = last = app;
+        }
+        size++;
     }
 }
