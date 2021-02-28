@@ -31,7 +31,8 @@ public class testmain {
         DataManage c = new DataManage();
         Graph trying  = c.readCSV();
         System.out.println(trying.printList());
-        
+        System.out.println(trying.busquedaActor());    
+        System.out.println(trying.busquedaPelicula());
     }
     
 }
