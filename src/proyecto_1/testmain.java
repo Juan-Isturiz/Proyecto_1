@@ -5,14 +5,6 @@
  */
 package proyecto_1;
 
-import org.graphstream.graph.EdgeRejectedException;
-import org.graphstream.graph.ElementNotFoundException;
-import org.graphstream.graph.Graph;
-import org.graphstream.graph.IdAlreadyInUseException;
-import org.graphstream.graph.Node;
-import org.graphstream.graph.implementations.SingleGraph;
-import org.graphstream.ui.view.Viewer;
-
 /**
  *
  * @author yunch
@@ -26,7 +18,10 @@ public class testmain {
         System.setProperty("org.graphstream.ui", "swing");
         DataManage ass = new DataManage();
         Grafo grafo = ass.readCSV();
-        grafo.graficoId();
+        grafo.graficoName();
+        Pila prueba = grafo.DegreesDFS("\"Kevin Bacon\"", "\"Chris Sarandon\"", new Pila(), new Pila());
+        String a = prueba.getCima().getName();
         
+        System.out.println(prueba.getSize());
     }
 }

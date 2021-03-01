@@ -5,6 +5,7 @@
  */
 package proyecto_1;
 
+import javax.swing.JOptionPane;
 import org.graphstream.graph.EdgeRejectedException;
 import org.graphstream.graph.ElementNotFoundException;
 import org.graphstream.graph.Graph;
@@ -152,7 +153,8 @@ public class Grafo {
     public void setActors(List actors) {
         this.actors = actors;
     }
-    public void graficoId(){
+
+    public void graficoId() {
         Graph graph = new SingleGraph("Grafo");
         graph.setAutoCreate(true);
         graph.setAttribute("ui.quality");
@@ -166,23 +168,24 @@ public class Grafo {
             node.setAttribute("ui.label", node.getId());
         }
         for (int i = 0; i < size; i++) {
-            for(int j = 1;j<adylist[i].getSize();j++){
+            for (int j = 1; j < adylist[i].getSize(); j++) {
                 int a = adylist[i].index(0).getEdges().getSize();
-                for (int k = 0; k<adylist[i].index(0).getEdges().getSize(); k++){
-                    try{
-                    String id = String.valueOf(adylist[i].index(j).getEdges().searchId(adylist[i].index(0).getEdges().index(k).getId()));
-                    graph.addEdge(id, String.valueOf(adylist[i].index(j).getId()), String.valueOf(adylist[i].index(0).getId()));
-                    }catch(EdgeRejectedException | ElementNotFoundException | IdAlreadyInUseException e){
-                        
+                for (int k = 0; k < adylist[i].index(0).getEdges().getSize(); k++) {
+                    try {
+                        String id = String.valueOf(adylist[i].index(j).getEdges().searchId(adylist[i].index(0).getEdges().index(k).getId()));
+                        graph.addEdge(id, String.valueOf(adylist[i].index(j).getId()), String.valueOf(adylist[i].index(0).getId()));
+                    } catch (EdgeRejectedException | ElementNotFoundException | IdAlreadyInUseException e) {
+
                     }
                 }
             }
         }
-        
+
         graph.display();
-        
+
     }
-    public void graficoName(){
+
+    public void graficoName() {
         Graph graph = new SingleGraph("Grafo");
         graph.setAutoCreate(true);
         graph.setAttribute("ui.quality");
@@ -196,20 +199,58 @@ public class Grafo {
             node.setAttribute("ui.label", node.getId());
         }
         for (int i = 0; i < size; i++) {
-            for(int j = 1;j<adylist[i].getSize();j++){
+            for (int j = 1; j < adylist[i].getSize(); j++) {
                 int a = adylist[i].index(0).getEdges().getSize();
-                for (int k = 0; k<adylist[i].index(0).getEdges().getSize(); k++){
-                    try{
-                    String id = String.valueOf(adylist[i].index(j).getEdges().searchId(adylist[i].index(0).getEdges().index(k).getId()));
-                    graph.addEdge(id, String.valueOf(adylist[i].index(j).getName()), String.valueOf(adylist[i].index(0).getName()));
-                    }catch(EdgeRejectedException | ElementNotFoundException | IdAlreadyInUseException e){
-                        
+                for (int k = 0; k < adylist[i].index(0).getEdges().getSize(); k++) {
+                    try {
+                        String id = String.valueOf(adylist[i].index(j).getEdges().searchId(adylist[i].index(0).getEdges().index(k).getId()));
+                        graph.addEdge(id, String.valueOf(adylist[i].index(j).getName()), String.valueOf(adylist[i].index(0).getName()));
+                    } catch (EdgeRejectedException | ElementNotFoundException | IdAlreadyInUseException e) {
+
                     }
                 }
             }
         }
-        
+
         graph.display();
-        
+
+    }
+
+    public Pila DegreesDFS(String inicio, String destino, Pila visited, Pila camino) {
+        Nodo aux;
+        for (int i = 0; i < size; i++) {
+            if (adylist[i].index(0).getName().equals(inicio)) {
+                aux = adylist[i].index(0);
+                camino.pile(aux);
+                if (!camino.in(destino)) {
+                    for (int j = 1; j < adylist[i].getSize(); j++) {
+                        if (adylist[i].index(j).getName().equals(destino)) {
+                            camino.pile(adylist[i].index(j));
+                            break;
+                        } else if ((!camino.in(adylist[i].index(j).getName())) && !(visited.in(adylist[i].index(j).getName()))) {
+                            camino = this.DegreesDFS(adylist[i].index(j).getName(), destino, visited, camino);
+                        }
+
+                    }
+                    if (!camino.in(destino)) {
+                        visited.pile(camino.getCima());
+                        camino.depile();
+
+                    }
+                }
+
+                break;
+            }
+        }
+        if (camino.in(destino)) {
+            for (int i = 0; i < camino.getSize(); i++) {
+                if (camino.getCima().getName().equals(camino.getCima().getPrev().getName())) {
+                    camino.depile();
+                } else {
+                    break;
+                }
+            }
+        }
+        return camino;
     }
 }

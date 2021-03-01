@@ -22,24 +22,27 @@ public class Pila {
     }
 
     public void pile(Nodo a) {
-        Nodo b = new Nodo(a.getId(), a.getName(), a.getBirth());
-        b.setEdges(a.getEdges());
-        if (getSize() == 0) {
-            setCima(b);setBase(b);
-        } else {
-            getCima().setNext(b);
-            b.setPrev(getCima());
-            this.setCima(b);
-        }
-        setSize(getSize() + 1);
+        if (a != null) {
+            Nodo b = new Nodo(a.getId(), a.getName(), a.getBirth());
+            b.setEdges(a.getEdges());
+            if (getSize() == 0) {
+                setCima(b);
+                setBase(b);
+            } else {
+                getCima().setNext(b);
+                b.setPrev(getCima());
+                this.setCima(b);
+            }
+            size++;
 
+        }
     }
 
     public void depile() {
         if (getSize() != 0) {
             this.setCima(getCima().getPrev());
         }
-        setSize(getSize() - 1);
+        size--;
     }
 
     /**
@@ -82,5 +85,20 @@ public class Pila {
      */
     public void setSize(int size) {
         this.size = size;
+    }
+
+    public boolean in(String search) {
+        boolean innit = false;
+        Nodo aux = base;
+        while ((aux != null) && !(innit)) {
+            if (aux.getName().equals(search)) {
+                innit = true;
+                break;
+            } else {
+                aux = aux.getNext();
+            }
+        }
+
+        return innit;
     }
 }
