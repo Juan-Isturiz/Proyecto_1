@@ -17,7 +17,6 @@ public class Ventana2 extends javax.swing.JFrame {
     static Grafo grafo;
     public Ventana2(Grafo grafo) {
         initComponents();
-        this.setLocationRelativeTo(null);
         this.grafo = grafo;
     }
 
@@ -48,7 +47,7 @@ public class Ventana2 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTextField1.setText("jTextField1");
+        jTextField1.setText("        ");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -66,7 +65,7 @@ public class Ventana2 extends javax.swing.JFrame {
 
         jLabel5.setText("Buscar elenco de una película");
 
-        jTextField2.setText("jTextField2");
+        jTextField2.setText("       ");
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
@@ -159,22 +158,27 @@ public class Ventana2 extends javax.swing.JFrame {
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
-        String busqueda = jTextField1.getText();
+        
         
         
     }                                           
 
-    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                               
+    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {
+        String busqueda = jTextField1.getText();
+        System.out.println(grafo.busquedaActor(busqueda));
         // TODO add your handling code here:
     }                                              
 
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                               
         // TODO add your handling code here:
+        String busqueda = jTextField2.getText();
+        System.out.println(grafo.busquedaActor(busqueda));
+        
     }                                              
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
-        String busqueda = jTextField2.getText();
+        
         
     }                                           
 
