@@ -67,9 +67,8 @@ public class Grafo {
         return print;
     }
 
-    public String busquedaActor() {
+    public String busquedaActor(String busqueda) {
         String pelipeli = "";
-        String busqueda = "Kevin Bacon";
         for (int i = 0; size > i; i++) {
 
             Nodo ayuda = actors.index(i);
@@ -90,9 +89,8 @@ public class Grafo {
         return pelipeli;
     }
 
-    public String busquedaPelicula() {
+    public String busquedaPelicula(String busqueda) {
         String elenco = "";
-        String busqueda = "Apollo 13";
         for (int i = 0; size > i; i++) {
             Nodo ayuda = actors.index(i);
             List peliculas = ayuda.getEdges();
