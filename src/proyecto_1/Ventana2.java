@@ -17,6 +17,7 @@ public class Ventana2 extends javax.swing.JFrame {
     static Grafo grafo;
     public Ventana2(Grafo grafo) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.grafo = grafo;
     }
 

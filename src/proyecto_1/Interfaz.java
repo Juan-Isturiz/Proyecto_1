@@ -4,13 +4,6 @@
  * and open the template in the editor.
  */
 package proyecto_1;
-import org.graphstream.graph.EdgeRejectedException;
-import org.graphstream.graph.ElementNotFoundException;
-import org.graphstream.graph.Graph;
-import org.graphstream.graph.IdAlreadyInUseException;
-import org.graphstream.graph.Node;
-import org.graphstream.graph.implementations.SingleGraph;
-import org.graphstream.ui.view.Viewer;
 
 /**
  *
@@ -23,6 +16,7 @@ public class Interfaz extends javax.swing.JFrame {
      */
     public Interfaz() {
         initComponents();
+        this.setLocationRelativeTo(null);
         System.setProperty("org.graphstream.ui", "swing");
         
         
