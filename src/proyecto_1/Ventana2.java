@@ -14,8 +14,10 @@ public class Ventana2 extends javax.swing.JFrame {
     /**
      * Creates new form Ventana2
      */
-    public Ventana2() {
+    static Grafo grafo;
+    public Ventana2(Grafo grafo) {
         initComponents();
+        this.grafo = grafo;
     }
 
     /**
@@ -205,7 +207,7 @@ public class Ventana2 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Ventana2().setVisible(true);
+                new Ventana2(grafo).setVisible(true);
             }
         });
     }
