@@ -105,7 +105,7 @@ public class Interfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
         DataManage ass = new DataManage();
         Grafo grafo = ass.readCSV();
-        new Ventana2().setVisible(true); 
+        new Ventana2(grafo).setVisible(true); 
         
         /*grafo.graficoId();*/
     }                                              
